@@ -1,0 +1,140 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+    <title>Book your Ride !</title>
+    <style >
+    
+      body {
+	 font-family: "Lucida Console", Courier, monospace;
+     color: dimgrey;
+     margin: 0;
+     background-image: url(resources/image/6.jpg);
+     background-repeat: round;
+}
+
+#dt {
+
+    box-shadow: 5px 10px #888888;
+    position: absolute;
+    background: transparent;
+    width: 50%;
+        margin-top: 40px;
+    left: 20%;
+	}
+	
+
+#www {
+    text-align: center;
+    border: 1px solid;
+    box-shadow: 5px 10px #888888;
+    position: absolute;
+    /* overflow: hidden; */
+    background: transparent;
+    width: 67%;
+    top: 20%;
+    left: 15%;
+	}
+	
+	
+	
+	#subwww {
+
+    margin-bottom: 75px;
+
+	}
+
+     .successText {
+    font-weight: bold;
+    float: right;
+    color: #0cc9dc;
+    padding: 14px 16px;
+    font-size: 17px;
+    padding-right: 33px
+        }
+
+	 .header {
+	 text-align: center;
+  overflow: hidden;
+  background: aliceblue;
+}
+
+.header a {
+  float: right;
+
+  color: #0cc9dc;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+   padding-right: 25px;
+}
+
+#footer{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 0;
+  background-color: #efefef;
+  text-align: center;
+}
+
+    </style>
+</h:head>
+<h:body>
+<h:form id="form">
+
+   <div class="header">
+        <h:graphicImage   value="/resources/image/title2.png"/> 
+          <h:commandLink action="#{clientBean.logout}" value="Logout">
+          </h:commandLink>
+         <h:outputText class="successText" value="#{clientBean.client.username}" /> 
+   </div>
+ 
+  
+	
+	
+     
+  <div id="dt">
+      <h:form id="ride">
+          
+         <p:dataTable id="ride" sortBy="#{ride.startTime}"  editable="true" value="#{clientBean.rideList}" var="ride">
+        
+              <f:facet name="header">List of your booked Rides</f:facet>
+         
+     
+              
+              <p:column  headerText="Pick up address">   
+               <h:outputText value="#{ride.startAddress}" />
+              </p:column>          
+              <p:column headerText="Destination Address"> 
+                <h:outputText value="#{ride.finishAddress}" />
+              </p:column>
+               <p:column headerText="Pick up Time"> 
+                <h:outputText value="#{ride.startTime}" />
+              </p:column>
+  
+              
+              
+              <p:column>
+              <p:commandButton id="btn" type="button" icon="pi pi-globe" value="Show Map" onclick="PF('dlgeg').show();" />
+              </p:column>
+              
+         
+
+					
+         </p:dataTable> 
+      </h:form> 
+      </div>
+
+
+        <div id="footer">
+        <h5>Taxi Web App developed by Uesli Hodaj (IkubInfo Academy). ueslihodaj@outlook.com</h5>
+        </div>
+
+      </h:form>
+</h:body>
+</html>

@@ -1,0 +1,126 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+<title>Taxi Service</title>
+	<style>
+	    body {
+	 font-family: "Lucida Console", Courier, monospace;
+     color: dimgrey;
+     margin: 0;
+     background-image: url(resources/image/6.jpg);
+     background-repeat: round;
+}
+#www {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 70vh;
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px #888888;
+    position: absolute;
+    overflow: hidden;
+    background: transparent;
+    width: 25%;
+    top: 10%;
+    left: 35%;
+	}
+	
+	
+	
+	#subwww {
+	margin-top: 20px;
+    margin-bottom: 100px;
+    line-height: 20%;
+	}
+
+	 .header {
+	 text-align: center;
+  overflow: hidden;
+  background: aliceblue;
+}
+
+.header a {
+  float: right;
+  
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+    padding-right: 100px;
+}
+
+#footer{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 0;
+  background-color: #efefef;
+  text-align: center;
+}
+	</style>
+	
+         <link rel="icon" type="image/x-icon" href ="resources/image/loo.png" />  
+</h:head>
+
+
+
+
+<h:body>
+
+	<p:growl id="message-test" showDetail="true" />
+	
+   <div class="header">
+ <h:graphicImage value="/resources/image/title2.png" />
+  <a href="#home"></a>
+      </div>
+ 
+ 
+ <h:form>
+          <div id="www" >
+
+       <h:graphicImage value="/resources/image/4.png" />
+
+      
+
+      <div id="subwww">
+      
+      <h4>Login to use our services </h4>
+      
+      <p:column>      
+      <p:inputText id="input" value="#{loginBean.client.username}" autocomplete="off"  />
+      </p:column>
+<br/>
+      <p:column>
+      <p:inputText type="password" value="#{loginBean.client.password}" autocomplete="off"  />
+      </p:column>
+      
+ <br/>
+
+       <p:commandButton   value="Login" update=":message-test" action="#{loginBean.login}" /> 
+       </div>
+
+
+          <div>
+          <h4 style="margin: auto;">Not yet registered?</h4>  
+          <p:commandButton   value="Register" action="#{loginBean.registerButton}" /> 
+          </div>
+
+</div>
+</h:form>
+
+    <div id="footer">
+       <h5>Taxi Web App developed by Uesli Hodaj (IkubInfo Academy). ueslihodaj@outlook.com</h5>
+    </div>
+    
+
+</h:body>
+</html>

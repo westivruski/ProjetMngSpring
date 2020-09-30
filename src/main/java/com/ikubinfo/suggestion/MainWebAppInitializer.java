@@ -19,7 +19,9 @@ public class MainWebAppInitializer extends FacesInitializer implements WebApplic
 		facesServlet.addMapping("*.xhtml");
 
 		AnnotationConfigWebApplicationContext root = new AnnotationConfigWebApplicationContext();
-		root.register(AppConfiguration.class);
+		root.register(SecurityConfig.class);
 		sc.addListener(new ContextLoaderListener(root));
 	}
+	
+	
 }

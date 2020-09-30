@@ -1,0 +1,145 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<style>
+	    body {
+	 font-family: "Lucida Console", Courier, monospace;
+     color: dimgrey;
+     margin: 0;
+     background-image: url(resources/image/6.jpg);
+     background-repeat: round;
+}
+#www {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 70vh;
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px #888888;
+    position: absolute;
+    overflow: hidden;
+    background: transparent;
+    width: 25%;
+    top: 10%;
+    left: 35%;
+	}
+	
+	#subwww {
+	    display: grid;
+    grid-template-columns: auto;
+    grid-row-gap: 7px;
+	margin-top: 20px;
+    margin-bottom: 40px;
+    line-height: 20%;
+	}
+
+	 .header {
+	 text-align: center;
+  overflow: hidden;
+  background: aliceblue;
+}
+
+.header a {
+  float: right;
+
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+    padding-right: 100px;
+}
+
+#footer{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 0;
+  background-color: #efefef;
+  text-align: center;
+}
+	</style>
+	             <link rel="icon" type="image/x-icon" href ="resources/image/loo.png" />  
+</h:head>
+
+<h:body>
+	<p:growl id="message-marker" showDetail="true" />
+       <div class="header">
+       <h:graphicImage value="/resources/image/title2.png" />
+       <a href="#home"></a>
+       </div>
+ 
+ 	 <h:form id="register">
+ 	
+      <div id="www" >
+
+      <h:graphicImage value="/resources/image/register.png"     style="margin-bottom: 30px;"  />
+
+      <div id="subwww">
+
+      <p:column>      
+      <p:outputLabel>First Name  </p:outputLabel>
+      <p:inputText id="input-fn" value="#{loginBean.client.firstName}"  required="true"  requiredMessage="First name  is required."/>
+      <p:message for="input-fn"/>
+      </p:column>
+
+      <p:column>
+      <p:outputLabel>Last Name  </p:outputLabel>
+      <p:inputText id="input-ln" value="#{loginBean.client.lastName}"  required="true"  requiredMessage="Last name  is required."/>
+      <p:message for="input-ln"/>
+      </p:column>
+
+      <p:column>
+      <p:outputLabel  >Username : </p:outputLabel>
+      <p:inputText id="input-un" value="#{loginBean.client.username}"  required="true" requiredMessage="Username is required." ></p:inputText>
+      <h:message id="message" for="input-un"></h:message>
+      </p:column>
+
+      <p:column>
+      <p:outputLabel>Email  </p:outputLabel>
+      <p:inputText id="input-em" value="#{loginBean.client.email}" required="true"  requiredMessage="Email field is required."/>
+      <p:message for="input-em"/>
+      </p:column>
+   
+      <p:column>
+      <p:outputLabel>Password  </p:outputLabel>
+      <p:inputText id="input-ps" value="#{loginBean.client.password}"  required="true"  requiredMessage="Password  is required."/>
+      <p:message for="input-ps"/>
+      </p:column>
+
+      <p:column>
+      <p:outputLabel>Phone Number  </p:outputLabel>
+      <p:inputText id="input-pn" value="#{loginBean.client.phonenumber}" />
+      <p:message for="input-pn"/>
+      </p:column>
+
+      <p:column>
+      
+      <p:commandButton    value="Save" action="#{loginBean.register}" update=":message-marker"/> 
+      
+      </p:column>
+    
+     </div>
+     
+				</div>
+</h:form>
+
+
+   <div id="footer">
+       <h5>Taxi Web App developed by Uesli Hodaj (IkubInfo Academy). ueslihodaj@outlook.com</h5>
+    </div>
+
+</h:body>
+</html>
+
+
+
+

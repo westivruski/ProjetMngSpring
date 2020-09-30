@@ -1,0 +1,184 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+    <title>Book your Ride !</title>
+    <style >
+    
+      body {
+	 font-family: "Lucida Console", Courier, monospace;
+     color: dimgrey;
+     margin: 0;
+     background-image: url(resources/image/6.jpg);
+     background-repeat: round;
+}
+
+#dt {
+
+    box-shadow: 5px 10px #888888;
+    position: relative;
+    background: transparent;
+    margin-top: 20px;
+    margin-bottom: 308px;
+    width: 73%;
+    top: 50%;
+    left: 12%;
+	}
+	
+
+#www {
+    text-align: center;
+    border: 1px solid;
+    box-shadow: 5px 10px #888888;
+    position: relative;
+    background: transparent;
+    width: 67%;
+    top: 10%;
+    left: 15%;
+	}
+	
+	
+	
+	#subwww {
+
+    margin-bottom: 75px;
+
+	}
+
+     .successText {
+    font-weight: bold;
+    float: right;
+    color: #0cc9dc;
+    padding: 14px 16px;
+    font-size: 17px;
+    padding-right: 33px
+        }
+
+	 .header {
+	 text-align: center;
+  overflow: hidden;
+  background: aliceblue;
+}
+
+.header a {
+  float: right;
+
+  color: #0cc9dc;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+   padding-right: 25px;
+}
+
+#footer{
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1px;
+  background-color: #efefef;
+  text-align: center;
+}
+
+    </style>
+             <link rel="icon" type="image/x-icon" href ="resources/image/loo.png" />  
+</h:head>
+<h:body>
+
+<p:growl id="message-marker" showDetail="true" />
+
+
+<div>
+
+<h:form id="form">
+
+<p:growl id="message-marker"/>
+
+   <div class="header">
+        <h:graphicImage   value="/resources/image/title2.png"/> 
+          <h:commandLink action="#{loginBean.logout}" value="Logout">
+          </h:commandLink>
+         <h:outputText class="successText" value="#{clientBean.client.username}" /> 
+
+   </div>
+ 
+  
+	      </h:form>
+	
+	<h:form>
+      <div id="www" >
+      <h:graphicImage value="/resources/image/1.png" />
+
+      <div id="subwww">
+      
+      <h4>Please fill the fields below to make your order! </h4>
+      
+      <p:inputText placeholder = "Start address" value="#{clientBean.ride.startAddress}"  />
+ 
+      <p:inputText placeholder = "Finish address"  value="#{clientBean.ride.finishAddress}"  />
+
+      <p:outputLabel for="time" />
+      <p:datePicker placeholder = "Time" id="time" value="#{clientBean.ride.startTime}" showTime="true"/>
+      
+      <p:inputText placeholder = "client_id"  value="#{clientBean.ride.client_id}" type="hidden" />
+             
+      <p:commandButton   value="Book" action="#{clientBean.orderRide}" update="ride" /> 
+      
+      </div>
+      </div>
+</h:form>
+  <div id="dt">
+      <h:form id="ride">
+          <p:growl id="message-marker"/>
+         <p:dataTable id="ride" sortBy="#{ride.startTime}"  editable="true" value="#{clientBean.rideList}" var="ride">
+        
+              <f:facet name="header">Your bookings will apperar there.</f:facet>
+         
+    
+              
+              <p:column  headerText="Pick up address">   
+               <h:outputText value="#{ride.startAddress}" />
+              </p:column>          
+              <p:column headerText="Destination Address"> 
+                <h:outputText value="#{ride.finishAddress}" />
+              </p:column>
+               <p:column headerText="Pick up Time"> 
+                <h:outputText value="#{ride.startTime}"><f:convertDateTime pattern="yyyy-MM-dd HH:mm"/>  </h:outputText>
+              </p:column>
+  
+              
+              <p:column headerText="Show in Map">
+              <p:commandButton id="btn" type="button" icon="pi pi-globe" value="Show Map" onclick="PF('dlgeg').show();" />
+              </p:column>
+              
+         
+         
+              <p:column headerText="Delete">
+              <p:commandButton id="mybutton"  action = "#{clientBean.deleteRide(ride.ride_id)}" value="Delete" update="ride">
+              <p:confirm header="Confirmation" message="Are you sure?" icon="pi pi-exclamation-triangle" />
+              </p:commandButton>  
+            
+              <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+              <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+              <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+              </p:confirmDialog> 
+              </p:column>
+                
+
+					
+         </p:dataTable> 
+      </h:form> 
+      </div>
+
+
+        <div id="footer">
+        <h5>Taxi Web App developed by Uesli Hodaj (IkubInfo Academy). ueslihodaj@outlook.com</h5>
+        </div>
+
+
+      </div>
+</h:body>
+</html>

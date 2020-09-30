@@ -6,27 +6,80 @@
    xmlns:h = "http://java.sun.com/jsf/html"
    xmlns:ui = "http://java.sun.com/jsf/facelets"> 
    
-   <h:head></h:head>
+    <h:head>
+    <style>
+    body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#footer{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 0;
+  background-color: #efefef;
+  text-align: center;
+}
+/* #header{
+  position: relative;
+  background-color: #efefef;
+}
+#header a {
+ overflow: hidden;
+ display: inline-block;
+ text-decoration: none;
+ margin-bottom: 10px;
+}
+ */
+/*  .topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: right;
+
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+    padding-right: 100px;
+} */
+ 
+	#www {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 70vh;
+	}
+</style>
+    </h:head>
    <h:body> 
-      <div style = "border-width:2px; border-color:green; border-style:solid;">
-         <ui:insert name = "header" >
+     	
+     	
+         <div id="header" class="topnav">
+            <ui:insert name = "header" >
             <ui:include src = "header.xhtml" />
-         </ui:insert> 
-      </div>
-      <br/>
-      
-      <div style = "border-width:2px; border-color:black; border-style:solid;">
-         <ui:insert name = "content" >
-       
-         </ui:insert>    
-      </div>
-      <br/>
-      
-      <div style = "border-width:2px; border-color:red; border-style:solid;">
-         <ui:insert name = "footer" >
+           </ui:insert> 
+	     </div>
+	    
+    
+        <div id="www">
+        <ui:insert name = "content" >
+         </ui:insert>     
+       </div>
+             
+ 
+  <div id="footer">
+            <ui:insert name = "footer" >
             <ui:include src = "footer.xhtml" />
-         </ui:insert>
-      </div>
-   
+           </ui:insert> 
+	     </div>
+
+
    </h:body>
 </html>
